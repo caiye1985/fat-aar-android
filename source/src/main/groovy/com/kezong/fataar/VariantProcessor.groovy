@@ -434,7 +434,9 @@ class VariantProcessor {
     private def createRFile(AndroidArchiveLibrary library, def rFolder) {
         def libPackageName = mVariant.getApplicationId()
         def aarPackageName = library.getPackageName()
-
+        if (Strings.isNullOrEmpty(aarPackageName)){
+            return
+        }
         String packagePath = aarPackageName.replace('.', '/')
 
         def rTxt = library.getSymbolFile()
